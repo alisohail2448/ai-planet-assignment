@@ -3,6 +3,7 @@ import { challengesData } from "../constants/constants";
 import Card from "./Card";
 import FiltersDropdown from "./FiltersDropdown";
 import SearchBar from "./SearchBar";
+import { Cancel } from "@mui/icons-material";
 
 const Challenges = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -10,6 +11,15 @@ const Challenges = () => {
     status: [],
     level: [],
   });
+
+  const handleRemoveFilter = (filterType, filterValue) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      [filterType]: prevFilters[filterType].filter(
+        (item) => item !== filterValue
+      ),
+    }));
+  };
 
   const filteredChallenges = challengesData
     .filter(
@@ -65,6 +75,45 @@ const Challenges = () => {
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
             />
+          </div>
+          <div>
+            <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
+              {Object.keys(selectedFilters).map((filterType) =>
+                selectedFilters[filterType].map((filterValue) => (
+                  <div
+                    key={`${filterType}-${filterValue}`}
+                    style={{
+                      background: "#798f9a",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 5,
+                      padding: "6px 12px",
+                      borderRadius: 18,
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        color: "#fff",
+                        fontWeight: "500",
+                      }}
+                    >
+                      {filterValue}
+                    </p>
+                    <Cancel
+                      style={{
+                        fill: "#fff",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                      }}
+                      onClick={() =>
+                        handleRemoveFilter(filterType, filterValue)
+                      }
+                    />
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </div>

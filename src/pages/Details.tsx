@@ -12,7 +12,6 @@ const Details = () => {
   useEffect(() => {
     if (id) {
       const data = getChallengeById(Number(id));
-      console.log("challeng", data);
       if (data) {
         setChallenge(data);
       }
@@ -29,7 +28,7 @@ const Details = () => {
     >
       <div
         style={{
-          maxWidth: "1400px",
+          maxWidth: "1200px",
           margin: "0 auto",
           padding: "80px 0",
         }}

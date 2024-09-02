@@ -1,80 +1,256 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Button, MenuItem, Box, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import CustomTextInput from "../components/CustomTextInput";
+import { DatePicker } from "@mui/x-date-pickers";
+import { getChallengeById } from "../utils/helper";
+import { useNavigate, useParams } from "react-router-dom";
+import dayjs from "dayjs";
+import { ArrowForward } from "@mui/icons-material";
+import imageIcon from "../assets/icons/image.svg";
+import toast from "react-hot-toast";
+
+const validationSchema = Yup.object({
+  challengeName: Yup.string().required("Challenge Name is required"),
+  startDate: Yup.date().nullable().required("Start Date is required"),
+  endDate: Yup.date()
+    .nullable()
+    .required("End Date is required")
+    .min(Yup.ref("startDate"), "End Date cannot be before Start Date"),
+  description: Yup.string().required("Description is required"),
+  level: Yup.string().required("Level is required"),
+});
 
 const CreateChallenge = () => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
-  const [level, setLevel] = useState("Easy");
+  const [challenge, setChallenge] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id) {
+      const data = getChallengeById(Number(id));
+      if (data) {
+        setChallenge({
+          ...data,
+          startDate: dayjs(data.startDate),
+          endDate: dayjs(data.endDate),
+        });
+      }
+    }
+  }, [id]);
+
+  const formik = useFormik({
+    initialValues: {
+      challengeName: challenge?.title || "",
+      startDate: challenge?.startDate || null,
+      endDate: challenge?.endDate || null,
+      description: challenge?.description || "",
+      level: challenge?.level || "Easy",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      const formattedValues = {
+        ...values,
+        startDate: values.startDate ? values.startDate.toISOString() : null,
+        endDate: values.endDate ? values.endDate.toISOString() : null,
+      };
+      if (id) {
+        toast.success("Challenge Saved Successfully!");
+        navigate("/");
+      } else {
+        toast.success("Challenge Created Successfully!");
+        navigate("/");
+      }
+    },
+    enableReinitialize: true,
+  });
 
   return (
     <div style={{ background: "#F8F9FD", paddingBottom: 100 }}>
-      <div style={{ maxWidth: "1500px", margin: "0 auto", padding: "50px 0" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "50px 0" }}>
         <p style={{ fontSize: "24px", fontWeight: "600" }}>Challenge Details</p>
       </div>
-      <div style={{ background: "#fff", paddingTop: 10 }}>
+      <div style={{ background: "#fff" }}>
         <Box
           sx={{
-            maxWidth: "1500px",
+            maxWidth: "1200px",
             mx: "auto",
             display: "flex",
             flexDirection: "column",
-            gap: 5,
+            gap: 3,
             alignItems: "flex-start",
+            paddingTop: 4,
           }}
+          component="form"
+          onSubmit={formik.handleSubmit}
         >
-          <TextField
-            margin="normal"
-            variant="outlined"
-            sx={{ width: "600px" }}
-          />
-          <DatePicker
-            value={startDate}
-            onChange={(newValue) => setStartDate(newValue)}
-            sx={{ width: "600px" }}
-          />
-          <DatePicker
-            value={endDate}
-            onChange={(newValue) => setEndDate(newValue)}
-            sx={{ width: "600px" }}
+          <CustomTextInput
+            label="Challenge Name"
+            name="challengeName"
+            value={formik.values.challengeName}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.challengeName &&
+              Boolean(formik.errors.challengeName)
+            }
+            helperText={
+              formik.touched.challengeName && formik.errors.challengeName
+            }
           />
 
-          <TextField
-            margin="normal"
-            variant="outlined"
+          <div>
+            <p
+              style={{
+                fontSize: "16px",
+                color: "#333333",
+                fontWeight: 500,
+                marginBottom: "8px",
+              }}
+            >
+              Start Date
+            </p>
+            <DatePicker
+              value={formik.values.startDate}
+              onChange={(newValue) =>
+                formik.setFieldValue("startDate", newValue)
+              }
+              onBlur={formik.handleBlur}
+              slotProps={{ textField: { size: "small" } }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  error={
+                    formik.touched.startDate && Boolean(formik.errors.startDate)
+                  }
+                  helperText={
+                    formik.touched.startDate && formik.errors.startDate
+                  }
+                  fullWidth
+                />
+              )}
+            />
+          </div>
+
+          <div>
+            <p
+              style={{
+                fontSize: "16px",
+                color: "#333333",
+                fontWeight: 500,
+                marginBottom: "8px",
+              }}
+            >
+              End Date
+            </p>
+            <DatePicker
+              value={formik.values.endDate}
+              onChange={(newValue) => formik.setFieldValue("endDate", newValue)}
+              onBlur={formik.handleBlur}
+              slotProps={{ textField: { size: "small" } }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  error={
+                    formik.touched.endDate && Boolean(formik.errors.endDate)
+                  }
+                  helperText={formik.touched.endDate && formik.errors.endDate}
+                  fullWidth
+                />
+              )}
+            />
+          </div>
+
+          <CustomTextInput
+            label="Description"
+            name="description"
             multiline
             rows={8}
-            sx={{ width: "900px" }}
+            value={formik.values.description}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={
+              formik.touched.description && Boolean(formik.errors.description)
+            }
+            helperText={formik.touched.description && formik.errors.description}
           />
 
-          <Box>
-            <Typography variant="body1" gutterBottom>
-              Image
-            </Typography>
-            <Button
-              variant="outlined"
-              component="label"
-              startIcon={<CloudUploadIcon />}
-            >
-              Upload
-              <input type="file" hidden />
-            </Button>
-          </Box>
+          {challenge?.imageUrl ? (
+            <Box>
+              <div>
+                <Typography variant="body1" gutterBottom>
+                  Image
+                </Typography>
+                <img
+                  src={challenge?.imageUrl}
+                  style={{
+                    width: "200px",
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+              <Button
+                variant="outlined"
+                component="label"
+                style={{
+                  border: "none",
+                  color: "#44924C",
+                  textTransform: "capitalize",
+                  padding: "6px 24px",
+                  background: "transparent",
+                }}
+                startIcon={<img src={imageIcon} alt="image" width={16} />}
+                endIcon={<ArrowForward />}
+              >
+                Change Image
+                <input type="file" hidden />
+              </Button>
+            </Box>
+          ) : (
+            <Box>
+              <Typography variant="body1" gutterBottom>
+                Image
+              </Typography>
+              <Button
+                variant="outlined"
+                component="label"
+                style={{
+                  border: "1px solid #D9D9D9",
+                  color: "#666666",
+                  textTransform: "capitalize",
+                  padding: "6px 24px",
+                  background: "#F4F4F4",
+                }}
+                endIcon={<CloudUploadIcon />}
+              >
+                Upload
+                <input type="file" hidden />
+              </Button>
+            </Box>
+          )}
+
           <TextField
             select
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
+            name="level"
+            value={formik.values.level}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             margin="normal"
             variant="outlined"
             sx={{ width: "300px" }}
+            size="small"
+            error={formik.touched.level && Boolean(formik.errors.level)}
+            helperText={formik.touched.level && formik.errors.level}
           >
             <MenuItem value="Easy">Easy</MenuItem>
             <MenuItem value="Medium">Medium</MenuItem>
             <MenuItem value="Hard">Hard</MenuItem>
           </TextField>
-          <button
-            onClick={() => navigate(`/${id}`)}
+
+          <Button
+            type="submit"
             style={{
               backgroundColor: "#44924C",
               padding: "10px 20px",
@@ -93,10 +269,17 @@ const CreateChallenge = () => {
               (e.currentTarget.style.backgroundColor = "#28a745")
             }
           >
-            <p style={{ color: "white", fontSize: "14px", fontWeight: "600" }}>
-              Create Challenge
+            <p
+              style={{
+                color: "white",
+                fontSize: "14px",
+                fontWeight: "600",
+                textTransform: "capitalize",
+              }}
+            >
+              {id ? "Save Changes" : "Create Challenge"}
             </p>
-          </button>
+          </Button>
         </Box>
       </div>
     </div>

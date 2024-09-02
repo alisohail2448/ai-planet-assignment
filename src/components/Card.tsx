@@ -44,12 +44,12 @@ const Card = ({
       return timeRemaining ? (
         <div
           style={{
-            fontSize: "14px",
-            color: "#666666",
             marginBottom: "20px",
           }}
         >
-          <p>Starts in</p>
+          <p style={{ color: "#444444", fontSize: "14px", fontWeight: "500" }}>
+            Starts in
+          </p>
           <div
             style={{
               display: "flex",
@@ -57,33 +57,50 @@ const Card = ({
               gap: "10px",
             }}
           >
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
-            >
-              {String(timeRemaining.days).padStart(2, "0")}
-            </span>
-            <span>Days</span>
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
-            >
-              {String(timeRemaining.hours).padStart(2, "0")}
-            </span>
-            <span>Hours</span>
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
-            >
-              {String(timeRemaining.minutes).padStart(2, "0")}
-            </span>
-            <span>Mins</span>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  color: "#454545",
+                }}
+              >
+                {String(timeRemaining.days).padStart(2, "0")}
+              </span>
+              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Days</span>
+            </div>
+
+            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span
+                style={{ color: "#4F4F4F", fontSize: "10px" }}
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  color: "#454545",
+                }}
+              >
+                {String(timeRemaining.hours).padStart(2, "0")}
+              </span>
+              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Hours</span>
+            </div>
+
+            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span
+                style={{ color: "#4F4F4F", fontSize: "10px" }}
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  color: "#454545",
+                }}
+              >
+                {String(timeRemaining.minutes).padStart(2, "0")}
+              </span>
+              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Mins</span>
+            </div>
           </div>
         </div>
       ) : (
@@ -101,12 +118,12 @@ const Card = ({
       return timeElapsed ? (
         <div
           style={{
-            fontSize: "14px",
-            color: "#666666",
             marginBottom: "20px",
           }}
         >
-          <p>Ends in</p>
+          <p style={{ color: "#444444", fontSize: "14px", fontWeight: "500" }}>
+            Ends in
+          </p>
           <div
             style={{
               display: "flex",
@@ -114,33 +131,46 @@ const Card = ({
               gap: "10px",
             }}
           >
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
-            >
-              {String(timeElapsed.days).padStart(2, "0")}
-            </span>
-            <span>Days</span>
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
-            >
-              {String(timeElapsed.hours).padStart(2, "0")}
-            </span>
-            <span>Hours</span>
-            <span
-              style={{
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
-            >
-              {String(timeElapsed.minutes).padStart(2, "0")}
-            </span>
-            <span>Mins</span>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  color: "#454545",
+                }}
+              >
+                {String(timeElapsed.days).padStart(2, "0")}
+              </span>
+              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Days</span>
+            </div>
+            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  color: "#454545",
+                }}
+              >
+                {String(timeElapsed.hours).padStart(2, "0")}
+              </span>
+              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Hours</span>
+            </div>
+            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <span
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "600",
+                  color: "#454545",
+                }}
+              >
+                {String(timeElapsed.minutes).padStart(2, "0")}
+              </span>
+              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Mins</span>
+            </div>
           </div>
         </div>
       ) : (
@@ -158,13 +188,15 @@ const Card = ({
       return (
         <div
           style={{
-            fontSize: "14px",
-            color: "#666666",
             marginBottom: "20px",
           }}
         >
-          <p>Ended on</p>
-          <p>{formatDateTime(endDate)}</p>
+          <p style={{ color: "#444444", fontSize: "14px", fontWeight: "500" }}>
+            Ended on
+          </p>
+          <p style={{ fontSize: "18px", color: "#454545", fontWeight: "600" }}>
+            {formatDateTime(endDate)}
+          </p>
         </div>
       );
     }
@@ -207,7 +239,7 @@ const Card = ({
           padding: "20px",
           textAlign: "center",
           display: "flex",
-          flexDirection: 'column',
+          flexDirection: "column",
           alignItems: "center",
         }}
       >

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import CreateChallenge from "./pages/CreateChallenge";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -17,9 +18,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Details />} />
           <Route path="/create" element={<CreateChallenge />} />
+          <Route path="/edit/:id" element={<CreateChallenge />} />
         </Routes>
       </div>
     </Router>
+    <Toaster />
     </LocalizationProvider>
   );
 }
