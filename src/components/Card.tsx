@@ -4,6 +4,7 @@ import {
   getStatusColor,
   getStatusTextColor,
 } from "../utils/helper";
+import { TaskAltOutlined } from "@mui/icons-material";
 
 const Card = ({
   id,
@@ -205,6 +206,9 @@ const Card = ({
         style={{
           padding: "20px",
           textAlign: "center",
+          display: "flex",
+          flexDirection: 'column',
+          alignItems: "center",
         }}
       >
         <div
@@ -235,15 +239,15 @@ const Card = ({
         <button
           onClick={() => navigate(`/${id}`)}
           style={{
-            backgroundColor: "#28a745",
-            color: "white",
+            backgroundColor: "#44924C",
             padding: "10px 15px",
-            fontSize: "14px",
             border: "none",
-            borderRadius: "5px",
+            borderRadius: 12,
             cursor: "pointer",
-            width: "100%",
             transition: "background-color 0.3s ease",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
           }}
           onMouseOver={(e) =>
             (e.currentTarget.style.backgroundColor = "#218838")
@@ -252,7 +256,10 @@ const Card = ({
             (e.currentTarget.style.backgroundColor = "#28a745")
           }
         >
-          {buttonText}
+          <TaskAltOutlined style={{ fontSize: 18, color: "#fff" }} />
+          <p style={{ color: "white", fontSize: "14px", fontWeight: "600" }}>
+            Participate Now
+          </p>
         </button>
       </div>
     </div>

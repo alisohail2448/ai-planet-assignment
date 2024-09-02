@@ -1,3 +1,5 @@
+import { challengesData } from "../constants/constants";
+
 export const getDayWithSuffix = (day) => {
   const suffix = ["th", "st", "nd", "rd"];
   const value = day % 10;
@@ -29,4 +31,38 @@ export const getStatusTextColor = (status) => {
   if (status === "Active") return "#44924C";
   else if (status === "Upcoming") return "#666666";
   else return "#666666";
+};
+
+export const getChallengeById = (id) => {
+  return challengesData.find((challenge) => challenge.id === id);
+};
+
+const formatTimeAndDate = (dateString) => {
+  const date = new Date(dateString);
+  const options = {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+    timeZoneName: "short",
+  };
+  return date.toLocaleString("en-US", options);
+};
+
+export const getStatusMessage = (status, startDate, endDate) => {
+  const formattedStartDate = formatTimeAndDate(startDate);
+  const formattedEndDate = formatDateTime(endDate);
+
+  switch (status) {
+    case "Upcoming":
+      return `Starts on ${formattedStartDate}`;
+    case "Active":
+      return `Ends on ${formattedEndDate}`;
+    case "Past":
+      return `Ended on ${formattedEndDate}`;
+    default:
+      return "";
+  }
 };

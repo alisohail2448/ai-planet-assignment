@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 const Challenges = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState({
-    status: ["All"],
+    status: [],
     level: [],
   });
 
@@ -19,14 +19,11 @@ const Challenges = () => {
     )
     .filter((card) => {
       const statusMatch =
-        selectedFilters.status.includes("All") ||
         selectedFilters.status.length === 0 ||
         selectedFilters.status.includes(card.status);
-
       const levelMatch =
         selectedFilters.level.length === 0 ||
         selectedFilters.level.includes(card.level);
-
       return statusMatch && levelMatch;
     });
 

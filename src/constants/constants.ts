@@ -13,7 +13,6 @@ import Fourth from "../assets/cardImages/fourth.png";
 import Fifth from "../assets/cardImages/fifth.png";
 import Sixth from "../assets/cardImages/sixth.png";
 
-
 export const statisticsData = [
   {
     icon: AIIcon,
@@ -58,72 +57,77 @@ export const cardsData = [
       "You will stand out from the crowd if you do well in AI challenges, it not only helps you shine in the community but also earns rewards.",
   },
 ];
-
 export const challengesData = [
   {
     id: 1,
     status: "Upcoming",
     title: "Data Science Bootcamp - Graded Datathon",
+    subheading: "A unique opportunity to enhance your data science skills.", // Added subheading
     startDate: new Date("2024-09-04T09:00:00"),
     endDate: new Date("2024-09-02T23:59:00"),
-    buttonText: "Participate Now",
     imageUrl: First,
     level: "Easy",
-    description: "Join this exciting bootcamp to test your data science skills in a graded datathon. Perfect for beginners looking to gain practical experience.",
+    description:
+      "Join this exciting bootcamp to test your data science skills in a graded datathon. Perfect for beginners looking to gain practical experience.",
   },
   {
     id: 2,
     status: "Upcoming",
     title: "Data Sprint 72 - Butterfly Identification",
+    subheading: "Identify the class to which each butterfly belongs.", // Added subheading
     startDate: new Date("2024-09-03T10:00:00"),
     endDate: new Date("2024-09-03T23:59:00"),
-    buttonText: "Participate Now",
     imageUrl: Second,
     level: "Medium",
-    description: "Challenge your data skills by identifying butterfly species. This sprint is ideal for those interested in applied data science.",
+    description:
+      "Challenge your data skills by identifying butterfly species. This sprint is ideal for those interested in applied data science.",
   },
   {
     id: 3,
     status: "Active",
     title: "Data Sprint 71 - Weather Recognition",
+    subheading: "Predict weather patterns using machine learning models.", // Added subheading
     startDate: new Date("2024-09-01T08:00:00"),
     endDate: new Date("2024-09-02T20:00:00"),
-    buttonText: "Participate Now",
     imageUrl: Third,
     level: "Easy",
-    description: "Participate in the weather recognition sprint to improve your model's accuracy in predicting weather patterns.",
+    description:
+      "Participate in the weather recognition sprint to improve your model's accuracy in predicting weather patterns.",
   },
   {
     id: 4,
     status: "Active",
     title: "Data Sprint 70 - Airline Passenger Satisfaction",
+    subheading: "Analyze data to enhance passenger satisfaction.", // Added subheading
     startDate: new Date("2024-09-01T09:00:00"),
     endDate: new Date("2024-09-03T09:00:00"),
-    buttonText: "Participate Now",
     imageUrl: Fourth,
     level: "Hard",
-    description: "Dive into analyzing passenger satisfaction data to enhance the airline experience. Ideal for those seeking a challenging problem.",
+    description:
+      "Dive into analyzing passenger satisfaction data to enhance the airline experience. Ideal for those seeking a challenging problem.",
   },
   {
     id: 5,
     status: "Past",
     title: "Engineering Graduates Employment Outcomes",
+    subheading: "Discover employment trends among engineering graduates.", // Added subheading
     startDate: new Date("2022-05-15T09:00:00"),
     endDate: new Date("2022-05-16T21:00:00"),
-    buttonText: "Participate Now",
     imageUrl: Fifth,
     level: "Hard",
-    description: "Explore employment outcomes for engineering graduates. A comprehensive challenge that has concluded but offers insights into past data.",
+    description:
+      "Explore employment outcomes for engineering graduates. A comprehensive challenge that has concluded but offers insights into past data.",
   },
   {
     id: 6,
     status: "Past",
     title: "Travel Insurance Claim Prediction",
+    subheading: "Predict insurance claims based on travel data.", // Added subheading
     startDate: new Date("2022-05-15T09:00:00"),
     endDate: new Date("2022-05-16T21:00:00"),
-    buttonText: "Participate Now",
     imageUrl: Sixth,
     level: "Medium",
-    description: "Predict travel insurance claims in this past challenge. It provided valuable experience in handling insurance data and prediction models.",
+    description:
+      "Predict travel insurance claims in this past challenge. It provided valuable experience in handling insurance data and prediction models.",
   },
 ];

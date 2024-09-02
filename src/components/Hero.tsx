@@ -1,8 +1,10 @@
 import { statisticsData } from "../constants/constants";
 import hero from "../assets/hero.png";
+import { useNavigate } from "react-router-dom";
 
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className="hero-container">
       <div className="hero-content">
@@ -16,7 +18,7 @@ const Hero = () => {
             allowing you to foster learning through competitions.
           </p>
           <div>
-            <button className="hero-button">Create Challenge</button>
+            <button onClick={() => navigate('/create')} className="hero-button">Create Challenge</button>
           </div>
         </div>
         <div className="hero-image">
