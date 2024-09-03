@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import { challengesData } from "../constants/constants";
 import Card from "./Card";
 import FiltersDropdown from "./FiltersDropdown";
 import SearchBar from "./SearchBar";
 import { Cancel } from "@mui/icons-material";
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     background: "#003145",
     height: "100%",

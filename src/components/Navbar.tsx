@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { CSSProperties } from "react";
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   navbarContainer: {
     padding: "10px",
     backgroundColor: "#fff",

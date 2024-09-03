@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getChallengeById, getStatusMessage } from "../utils/helper";
 import { AccessTime } from "@mui/icons-material";
 import level from "../assets/icons/level.svg";
 import Description from "../components/Description";
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     background: "#003145",
     paddingBottom: 40,

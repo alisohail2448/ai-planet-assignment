@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { TextField, Button, MenuItem, Box, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useFormik } from "formik";
@@ -12,7 +12,7 @@ import { ArrowForward } from "@mui/icons-material";
 import imageIcon from "../assets/icons/image.svg";
 import toast from "react-hot-toast";
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     background: "#F8F9FD",
     paddingBottom: 100,

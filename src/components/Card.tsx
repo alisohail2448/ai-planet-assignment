@@ -5,9 +5,10 @@ import {
   getStatusTextColor,
 } from "../utils/helper";
 import { TaskAltOutlined } from "@mui/icons-material";
+import { CSSProperties } from "react";
 
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   cardContainer: {
     backgroundColor: "#ffffff",
     borderRadius: "15px",

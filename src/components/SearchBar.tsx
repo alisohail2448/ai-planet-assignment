@@ -1,7 +1,8 @@
 import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { CSSProperties } from "react";
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   searchBarContainer: {
     backgroundColor: "#fff",
     borderRadius: "10px",

@@ -1,6 +1,7 @@
+import { CSSProperties } from "react";
 import { cardsData } from "../constants/constants";
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   aboutContainer: {
     background: "#fff",
     height: "100%",

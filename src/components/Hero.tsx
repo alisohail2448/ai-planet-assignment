@@ -1,8 +1,11 @@
 import { statisticsData } from "../constants/constants";
 import hero from "../assets/hero.png";
 import { useNavigate } from "react-router-dom";
+import { CSSProperties } from "react";
 
-const styles = {
+
+
+const styles: { [key: string]: CSSProperties } = {
   heroContainer: {
     background: "#003145",
     height: "100%",

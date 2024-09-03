@@ -1,8 +1,8 @@
-import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
+import { CSSProperties } from "react";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -33,7 +33,7 @@ function a11yProps(index: number) {
   };
 }
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
   },
