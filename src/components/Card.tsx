@@ -34,7 +34,7 @@ const styles: { [key: string]: CSSProperties } = {
     padding: "20px",
     textAlign: "center",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" as 'column',
     alignItems: "center",
   },
   statusLabel: {
@@ -66,7 +66,7 @@ const styles: { [key: string]: CSSProperties } = {
   },
   timeSegment: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" as 'column',
   },
   timeValue: {
     fontSize: "16px",

@@ -17,7 +17,7 @@ const styles: { [key: string]: CSSProperties } = {
   contentWrapper: {
     padding: "30px 0",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" as 'column',
     alignItems: "center",
   },
   title: {
@@ -55,7 +55,7 @@ const styles: { [key: string]: CSSProperties } = {
     margin: "0 auto",
     padding: "100px 0",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "row" as 'row',
     alignItems: "center",
     justifyContent: "center",
   },

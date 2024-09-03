@@ -32,7 +32,7 @@ const styles: { [key: string]: CSSProperties } = {
     borderRadius: "10px",
     display: "flex",
     gap: "10px",
-    flexDirection: "column",
+    flexDirection: "column" as 'column',
   },
   cardTitle: {
     fontSize: "24px",

@@ -15,14 +15,14 @@ const styles: { [key: string]: CSSProperties } = {
     margin: "0 auto",
     padding: "100px 0",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "row" as 'row',
     alignItems: "center",
   },
   heroText: {
     width: "60%",
     display: "flex",
     gap: "50px",
-    flexDirection: "column",
+    flexDirection: "column" as 'column',
   },
   heroTitle: {
     borderLeft: "10px solid #ffce5c",
@@ -61,7 +61,7 @@ const styles: { [key: string]: CSSProperties } = {
   statisticsContent: {
     padding: "30px 0",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "row" as 'row',
     justifyContent: "space-evenly",
   },
   statisticItem: {

@@ -2,7 +2,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -92,7 +92,7 @@ const styles: { [key: string]: CSSProperties } = {
 };
 
 const Description = ({ challenge }) => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
   const navigate = useNavigate();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

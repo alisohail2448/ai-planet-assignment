@@ -33,7 +33,7 @@ const styles: { [key: string]: CSSProperties } = {
     maxWidth: "1200px",
     mx: "auto",
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "column" as 'column',
     gap: 3,
     alignItems: "flex-start",
     paddingTop: 4,

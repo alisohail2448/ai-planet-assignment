@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getChallengeById, getStatusMessage } from "../utils/helper";
 import { AccessTime } from "@mui/icons-material";
@@ -17,7 +17,7 @@ const styles: { [key: string]: CSSProperties } = {
   },
   statusContainer: {
     display: "inline-flex",
-    flexDirection: "row",
+    flexDirection: "row" as 'row',
     alignItems: "center",
     gap: 8,
     background: "#FFCE5C",
