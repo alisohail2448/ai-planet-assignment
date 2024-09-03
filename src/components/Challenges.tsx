@@ -5,6 +5,77 @@ import FiltersDropdown from "./FiltersDropdown";
 import SearchBar from "./SearchBar";
 import { Cancel } from "@mui/icons-material";
 
+const styles = {
+  container: {
+    background: "#003145",
+    height: "100%",
+  },
+  header: {
+    background: "#002a3b",
+    padding: "50px 0px",
+  },
+  contentWrapper: {
+    padding: "30px 0",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: "32px",
+    color: "#fff",
+    fontWeight: "600",
+    textAlign: "center",
+    paddingBottom: 60,
+  },
+  searchFiltersWrapper: {
+    display: "flex",
+    alignItems: "center",
+    gap: 20,
+  },
+  filtersContainer: {
+    display: "flex",
+    gap: 10,
+    marginTop: 20,
+  },
+  filterChip: {
+    background: "#798f9a",
+    display: "flex",
+    alignItems: "center",
+    gap: 5,
+    padding: "6px 12px",
+    borderRadius: 18,
+  },
+  filterText: {
+    fontSize: "14px",
+    color: "#fff",
+    fontWeight: "500",
+  },
+  cardContainer: {
+    maxWidth: "1400px",
+    margin: "0 auto",
+    padding: "100px 0",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  cardGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "60px",
+  },
+  noChallengesText: {
+    color: "#fff",
+    textAlign: "center",
+    gridColumn: "span 3",
+  },
+  cancelIcon: {
+    fill: "#fff",
+    fontSize: "16px",
+    cursor: "pointer",
+  },
+};
+
 const Challenges = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFilters, setSelectedFilters] = useState({
@@ -38,38 +109,11 @@ const Challenges = () => {
     });
 
   return (
-    <div
-      style={{
-        background: "#003145",
-        height: "100%",
-      }}
-    >
-      <div
-        style={{
-          background: "#002a3b",
-          padding: "50px 0px",
-        }}
-      >
-        <div
-          style={{
-            padding: "30px 0",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "32px",
-              color: "#fff",
-              fontWeight: "600",
-              textAlign: "center",
-              paddingBottom: 60,
-            }}
-          >
-            Explore Challenges
-          </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+    <div style={styles.container}>
+      <div style={styles.header}>
+        <div style={styles.contentWrapper}>
+          <p style={styles.title}>Explore Challenges</p>
+          <div style={styles.searchFiltersWrapper}>
             <SearchBar setSearchQuery={setSearchQuery} />
             <FiltersDropdown
               selectedFilters={selectedFilters}
@@ -77,35 +121,16 @@ const Challenges = () => {
             />
           </div>
           <div>
-            <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
+            <div style={styles.filtersContainer}>
               {Object.keys(selectedFilters).map((filterType) =>
                 selectedFilters[filterType].map((filterValue) => (
                   <div
                     key={`${filterType}-${filterValue}`}
-                    style={{
-                      background: "#798f9a",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 5,
-                      padding: "6px 12px",
-                      borderRadius: 18,
-                    }}
+                    style={styles.filterChip}
                   >
-                    <p
-                      style={{
-                        fontSize: "14px",
-                        color: "#fff",
-                        fontWeight: "500",
-                      }}
-                    >
-                      {filterValue}
-                    </p>
+                    <p style={styles.filterText}>{filterValue}</p>
                     <Cancel
-                      style={{
-                        fill: "#fff",
-                        fontSize: "16px",
-                        cursor: "pointer",
-                      }}
+                      style={styles.cancelIcon}
                       onClick={() =>
                         handleRemoveFilter(filterType, filterValue)
                       }
@@ -117,36 +142,12 @@ const Challenges = () => {
           </div>
         </div>
       </div>
-      <div
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "100px 0",
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3,1fr)",
-            gap: "60px",
-          }}
-        >
+      <div style={styles.cardContainer}>
+        <div style={styles.cardGrid}>
           {filteredChallenges.length > 0 ? (
             filteredChallenges.map((card) => <Card key={card.id} {...card} />)
           ) : (
-            <p
-              style={{
-                color: "#fff",
-                textAlign: "center",
-                gridColumn: "span 3",
-              }}
-            >
-              No challenges found
-            </p>
+            <p style={styles.noChallengesText}>No challenges found</p>
           )}
         </div>
       </div>

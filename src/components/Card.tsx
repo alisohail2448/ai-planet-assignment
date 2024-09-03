@@ -6,6 +6,118 @@ import {
 } from "../utils/helper";
 import { TaskAltOutlined } from "@mui/icons-material";
 
+
+const styles = {
+  cardContainer: {
+    backgroundColor: "#ffffff",
+    borderRadius: "15px",
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+    maxWidth: "350px",
+    margin: "auto",
+    fontFamily: "Arial, sans-serif",
+    overflow: "hidden",
+  },
+  imageContainer: {
+    width: "100%",
+    height: "150px",
+    overflow: "hidden",
+    borderTopLeftRadius: "15px",
+    borderTopRightRadius: "15px",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+  contentContainer: {
+    padding: "20px",
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  statusLabel: {
+    display: "inline-block",
+    padding: "5px 10px",
+    fontSize: "12px",
+    borderRadius: "15px",
+    marginBottom: "10px",
+    fontWeight: "600",
+  },
+  title: {
+    fontSize: "18px",
+    fontWeight: "bold",
+    color: "#333333",
+    marginBottom: "20px",
+  },
+  statusMessageContainer: {
+    marginBottom: "20px",
+  },
+  statusMessageText: {
+    color: "#444444",
+    fontSize: "14px",
+    fontWeight: "500",
+  },
+  timeContainer: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+  },
+  timeSegment: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  timeValue: {
+    fontSize: "16px",
+    fontWeight: "600",
+    color: "#454545",
+  },
+  timeLabel: {
+    color: "#4F4F4F",
+    fontSize: "10px",
+  },
+  timeSeparator: {
+    color: "#4F4F4F",
+    fontSize: "16px",
+  },
+  eventStartingNow: {
+    fontSize: "14px",
+    color: "#666666",
+    marginBottom: "20px",
+  },
+  eventEndingNow: {
+    fontSize: "14px",
+    color: "#666666",
+    marginBottom: "20px",
+  },
+  endDate: {
+    fontSize: "18px",
+    color: "#454545",
+    fontWeight: "600",
+  },
+  participateButton: {
+    backgroundColor: "#44924C",
+    padding: "10px 15px",
+    border: "none",
+    borderRadius: "12px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+  },
+  icon: {
+    fontSize: "18px",
+    color: "#fff",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: "14px",
+    fontWeight: "600",
+  },
+};
+
+
 const Card = ({
   id,
   status,
@@ -42,161 +154,79 @@ const Card = ({
   const renderStatusMessage = () => {
     if (status === "Upcoming") {
       return timeRemaining ? (
-        <div
-          style={{
-            marginBottom: "20px",
-          }}
-        >
-          <p style={{ color: "#444444", fontSize: "14px", fontWeight: "500" }}>
-            Starts in
-          </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "10px",
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "#454545",
-                }}
-              >
+        <div style={styles.statusMessageContainer}>
+          <p style={styles.statusMessageText}>Starts in</p>
+          <div style={styles.timeContainer}>
+            <div style={styles.timeSegment}>
+              <span style={styles.timeValue}>
                 {String(timeRemaining.days).padStart(2, "0")}
               </span>
-              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Days</span>
+              <span style={styles.timeLabel}>Days</span>
             </div>
 
-            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+            <span style={styles.timeSeparator}>:</span>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span
-                style={{ color: "#4F4F4F", fontSize: "10px" }}
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "#454545",
-                }}
-              >
+            <div style={styles.timeSegment}>
+              <span style={styles.timeValue}>
                 {String(timeRemaining.hours).padStart(2, "0")}
               </span>
-              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Hours</span>
+              <span style={styles.timeLabel}>Hours</span>
             </div>
 
-            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+            <span style={styles.timeSeparator}>:</span>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span
-                style={{ color: "#4F4F4F", fontSize: "10px" }}
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "#454545",
-                }}
-              >
+            <div style={styles.timeSegment}>
+              <span style={styles.timeValue}>
                 {String(timeRemaining.minutes).padStart(2, "0")}
               </span>
-              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Mins</span>
+              <span style={styles.timeLabel}>Mins</span>
             </div>
           </div>
         </div>
       ) : (
-        <div
-          style={{
-            fontSize: "14px",
-            color: "#666666",
-            marginBottom: "20px",
-          }}
-        >
+        <div style={styles.eventStartingNow}>
           <p>Event is starting now!</p>
         </div>
       );
     } else if (status === "Active") {
       return timeElapsed ? (
-        <div
-          style={{
-            marginBottom: "20px",
-          }}
-        >
-          <p style={{ color: "#444444", fontSize: "14px", fontWeight: "500" }}>
-            Ends in
-          </p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "10px",
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "#454545",
-                }}
-              >
+        <div style={styles.statusMessageContainer}>
+          <p style={styles.statusMessageText}>Ends in</p>
+          <div style={styles.timeContainer}>
+            <div style={styles.timeSegment}>
+              <span style={styles.timeValue}>
                 {String(timeElapsed.days).padStart(2, "0")}
               </span>
-              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Days</span>
+              <span style={styles.timeLabel}>Days</span>
             </div>
-            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+            <span style={styles.timeSeparator}>:</span>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "#454545",
-                }}
-              >
+            <div style={styles.timeSegment}>
+              <span style={styles.timeValue}>
                 {String(timeElapsed.hours).padStart(2, "0")}
               </span>
-              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Hours</span>
+              <span style={styles.timeLabel}>Hours</span>
             </div>
-            <span style={{ color: "#4F4F4F", fontSize: "16px" }}>:</span>
+            <span style={styles.timeSeparator}>:</span>
 
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <span
-                style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
-                  color: "#454545",
-                }}
-              >
+            <div style={styles.timeSegment}>
+              <span style={styles.timeValue}>
                 {String(timeElapsed.minutes).padStart(2, "0")}
               </span>
-              <span style={{ color: "#4F4F4F", fontSize: "10px" }}>Mins</span>
+              <span style={styles.timeLabel}>Mins</span>
             </div>
           </div>
         </div>
       ) : (
-        <div
-          style={{
-            fontSize: "14px",
-            color: "#666666",
-            marginBottom: "20px",
-          }}
-        >
+        <div style={styles.eventEndingNow}>
           <p>Event has ended!</p>
         </div>
       );
     } else if (status === "Past") {
       return (
-        <div
-          style={{
-            marginBottom: "20px",
-          }}
-        >
-          <p style={{ color: "#444444", fontSize: "14px", fontWeight: "500" }}>
-            Ended on
-          </p>
-          <p style={{ fontSize: "18px", color: "#454545", fontWeight: "600" }}>
-            {formatDateTime(endDate)}
-          </p>
+        <div style={styles.statusMessageContainer}>
+          <p style={styles.statusMessageText}>Ended on</p>
+          <p style={styles.endDate}>{formatDateTime(endDate)}</p>
         </div>
       );
     }
@@ -204,98 +234,40 @@ const Card = ({
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "#ffffff",
-        borderRadius: "15px",
-        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-        maxWidth: "350px",
-        margin: "auto",
-        fontFamily: "Arial, sans-serif",
-        overflow: "hidden",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          height: "150px",
-          overflow: "hidden",
-          borderTopLeftRadius: "15px",
-          borderTopRightRadius: "15px",
-        }}
-      >
-        <img
-          src={imageUrl}
-          alt={title}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
-        />
+    <div style={styles.cardContainer}>
+      <div style={styles.imageContainer}>
+        <img src={imageUrl} alt={title} style={styles.image} />
       </div>
-      <div
-        style={{
-          padding: "20px",
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <div style={styles.contentContainer}>
         <div
           style={{
-            display: "inline-block",
-            padding: "5px 10px",
-            fontSize: "12px",
+            ...styles.statusLabel,
             backgroundColor: getStatusColor(status),
             color: getStatusTextColor(status),
-            borderRadius: "15px",
-            marginBottom: "10px",
-            fontWeight: "600",
           }}
         >
           {status}
         </div>
-        <h3
-          style={{
-            fontSize: "18px",
-            fontWeight: "bold",
-            color: "#333333",
-            marginBottom: "20px",
-          }}
-        >
-          {title}
-        </h3>
+        <h3 style={styles.title}>{title}</h3>
         {renderStatusMessage()}
         <button
           onClick={() => navigate(`/${id}`)}
-          style={{
-            backgroundColor: "#44924C",
-            padding: "10px 15px",
-            border: "none",
-            borderRadius: 12,
-            cursor: "pointer",
-            transition: "background-color 0.3s ease",
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-          }}
+          style={styles.participateButton}
           onMouseOver={(e) =>
             (e.currentTarget.style.backgroundColor = "#218838")
           }
           onMouseOut={(e) =>
-            (e.currentTarget.style.backgroundColor = "#28a745")
+            (e.currentTarget.style.backgroundColor = "#44924C")
           }
         >
-          <TaskAltOutlined style={{ fontSize: 18, color: "#fff" }} />
-          <p style={{ color: "white", fontSize: "14px", fontWeight: "600" }}>
-            Participate Now
-          </p>
+          <TaskAltOutlined style={styles.icon} />
+          <p style={styles.buttonText}>Participate Now</p>
         </button>
       </div>
     </div>
   );
 };
+
+
 
 export default Card;

@@ -12,6 +12,71 @@ import { ArrowForward } from "@mui/icons-material";
 import imageIcon from "../assets/icons/image.svg";
 import toast from "react-hot-toast";
 
+const styles = {
+  container: {
+    background: "#F8F9FD",
+    paddingBottom: 100,
+  },
+  innerContainer: {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "50px 0",
+  },
+  title: {
+    fontSize: "24px",
+    fontWeight: 600,
+  },
+  formContainer: {
+    background: "#fff",
+  },
+  formBox: {
+    maxWidth: "1200px",
+    mx: "auto",
+    display: "flex",
+    flexDirection: "column",
+    gap: 3,
+    alignItems: "flex-start",
+    paddingTop: 4,
+  },
+  dateLabel: {
+    fontSize: "16px",
+    color: "#333333",
+    fontWeight: 500,
+    marginBottom: "8px",
+  },
+  imageButton: {
+    border: "none",
+    color: "#44924C",
+    textTransform: "capitalize",
+    padding: "6px 24px",
+    background: "transparent",
+  },
+  changeImageButton: {
+    border: "1px solid #D9D9D9",
+    color: "#666666",
+    textTransform: "capitalize",
+    padding: "6px 24px",
+    background: "#F4F4F4",
+  },
+  submitButton: {
+    backgroundColor: "#44924C",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: 12,
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    display: "flex",
+    alignItems: "center",
+    gap: 8,
+  },
+  submitButtonText: {
+    color: "white",
+    fontSize: "14px",
+    fontWeight: 600,
+    textTransform: "capitalize",
+  },
+};
+
 const validationSchema = Yup.object({
   challengeName: Yup.string().required("Challenge Name is required"),
   startDate: Yup.date().nullable().required("Start Date is required"),
@@ -68,21 +133,13 @@ const CreateChallenge = () => {
   });
 
   return (
-    <div style={{ background: "#F8F9FD", paddingBottom: 100 }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "50px 0" }}>
-        <p style={{ fontSize: "24px", fontWeight: "600" }}>Challenge Details</p>
+    <div style={styles.container}>
+      <div style={styles.innerContainer}>
+        <p style={styles.title}>Challenge Details</p>
       </div>
-      <div style={{ background: "#fff" }}>
+      <div style={styles.formContainer}>
         <Box
-          sx={{
-            maxWidth: "1200px",
-            mx: "auto",
-            display: "flex",
-            flexDirection: "column",
-            gap: 3,
-            alignItems: "flex-start",
-            paddingTop: 4,
-          }}
+          sx={styles.formBox}
           component="form"
           onSubmit={formik.handleSubmit}
         >
@@ -102,16 +159,7 @@ const CreateChallenge = () => {
           />
 
           <div>
-            <p
-              style={{
-                fontSize: "16px",
-                color: "#333333",
-                fontWeight: 500,
-                marginBottom: "8px",
-              }}
-            >
-              Start Date
-            </p>
+            <p style={styles.dateLabel}>Start Date</p>
             <DatePicker
               value={formik.values.startDate}
               onChange={(newValue) =>
@@ -135,16 +183,7 @@ const CreateChallenge = () => {
           </div>
 
           <div>
-            <p
-              style={{
-                fontSize: "16px",
-                color: "#333333",
-                fontWeight: 500,
-                marginBottom: "8px",
-              }}
-            >
-              End Date
-            </p>
+            <p style={styles.dateLabel}>End Date</p>
             <DatePicker
               value={formik.values.endDate}
               onChange={(newValue) => formik.setFieldValue("endDate", newValue)}
@@ -174,7 +213,9 @@ const CreateChallenge = () => {
             error={
               formik.touched.description && Boolean(formik.errors.description)
             }
-            helperText={formik.touched.description && formik.errors.description}
+            helperText={
+              formik.touched.description && formik.errors.description
+            }
           />
 
           {challenge?.imageUrl ? (
@@ -194,13 +235,7 @@ const CreateChallenge = () => {
               <Button
                 variant="outlined"
                 component="label"
-                style={{
-                  border: "none",
-                  color: "#44924C",
-                  textTransform: "capitalize",
-                  padding: "6px 24px",
-                  background: "transparent",
-                }}
+                style={styles.imageButton}
                 startIcon={<img src={imageIcon} alt="image" width={16} />}
                 endIcon={<ArrowForward />}
               >
@@ -216,13 +251,7 @@ const CreateChallenge = () => {
               <Button
                 variant="outlined"
                 component="label"
-                style={{
-                  border: "1px solid #D9D9D9",
-                  color: "#666666",
-                  textTransform: "capitalize",
-                  padding: "6px 24px",
-                  background: "#F4F4F4",
-                }}
+                style={styles.changeImageButton}
                 endIcon={<CloudUploadIcon />}
               >
                 Upload
@@ -251,17 +280,7 @@ const CreateChallenge = () => {
 
           <Button
             type="submit"
-            style={{
-              backgroundColor: "#44924C",
-              padding: "10px 20px",
-              border: "none",
-              borderRadius: 12,
-              cursor: "pointer",
-              transition: "background-color 0.3s ease",
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-            }}
+            style={styles.submitButton}
             onMouseOver={(e) =>
               (e.currentTarget.style.backgroundColor = "#218838")
             }
@@ -269,14 +288,7 @@ const CreateChallenge = () => {
               (e.currentTarget.style.backgroundColor = "#28a745")
             }
           >
-            <p
-              style={{
-                color: "white",
-                fontSize: "14px",
-                fontWeight: "600",
-                textTransform: "capitalize",
-              }}
-            >
+            <p style={styles.submitButtonText}>
               {id ? "Save Changes" : "Create Challenge"}
             </p>
           </Button>

@@ -1,5 +1,26 @@
-import { IconButton, TextField } from "@mui/material";
+import { IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+
+const styles = {
+  searchBarContainer: {
+    backgroundColor: "#fff",
+    borderRadius: "10px",
+    padding: "6px 10px",
+    display: "flex",
+    alignItems: "center",
+  },
+  searchIcon: {
+    fill: "#000000",
+  },
+  inputField: {
+    fontSize: "18px",
+    color: "#858585",
+    border: "none",
+    width: "800px",
+    padding: "10px",
+    outline: "none",
+  },
+};
 
 const SearchBar = ({ setSearchQuery }) => {
   const handleInputChange = (event) => {
@@ -7,29 +28,14 @@ const SearchBar = ({ setSearchQuery }) => {
   };
 
   return (
-    <div
-      style={{
-        background: "#fff",
-        borderRadius: 10,
-        padding: "6px 10px",
-        display: "flex",
-        alignItems: "center",
-      }}
-    >
+    <div style={styles.searchBarContainer}>
       <IconButton type="submit" aria-label="search">
-        <SearchIcon style={{ fill: "#000000" }} />
+        <SearchIcon style={styles.searchIcon} />
       </IconButton>
       <input
         onChange={handleInputChange}
         type="text"
-        style={{
-          fontSize: 18,
-          color: "#858585",
-          border: "none",
-          width: 800,
-          padding: 10,
-          outline: "none",
-        }}
+        style={styles.inputField}
         placeholder="Search"
       />
     </div>

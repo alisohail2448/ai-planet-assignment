@@ -2,45 +2,45 @@ import { cardsData } from "../constants/constants";
 
 const styles = {
   aboutContainer: {
-    background: '#fff',
-    height: '100%',
+    background: "#fff",
+    height: "100%",
   },
   aboutContent: {
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '100px 0',
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "100px 0",
   },
   aboutTitle: {
-    fontSize: '32px',
-    color: '#000',
+    fontSize: "32px",
+    color: "#000",
     fontWeight: 600,
-    textAlign: 'center',
-    paddingBottom: '100px',
+    textAlign: "center",
+    paddingBottom: "100px",
   },
   highlight: {
-    color: '#44924c',
+    color: "#44924c",
   },
   cardsGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '40px',
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "40px",
   },
   cardItem: {
-    background: '#f8f9fd',
-    padding: '60px 30px',
-    borderRadius: '10px',
-    display: 'flex',
-    gap: '10px',
-    flexDirection: 'column',
+    background: "#f8f9fd",
+    padding: "60px 30px",
+    borderRadius: "10px",
+    display: "flex",
+    gap: "10px",
+    flexDirection: "column",
   },
   cardTitle: {
-    fontSize: '24px',
-    color: '#000',
+    fontSize: "24px",
+    color: "#000",
     fontWeight: 600,
   },
   cardDescription: {
-    fontSize: '16px',
-    color: '#64607d',
+    fontSize: "16px",
+    color: "#64607d",
   },
 };
 
@@ -49,7 +49,8 @@ const About = () => {
     <div style={styles.aboutContainer}>
       <div style={styles.aboutContent}>
         <p style={styles.aboutTitle}>
-          Why Participate in <span style={styles.highlight}>AI Challenges?</span>
+          Why Participate in{" "}
+          <span style={styles.highlight}>AI Challenges?</span>
         </p>
 
         <div style={styles.cardsGrid}>
