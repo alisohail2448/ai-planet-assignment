@@ -1,4 +1,4 @@
-import { challengesData } from "../constants/constants";
+import { challengesData } from "../constants/constant";
 
 export const getDayWithSuffix = (day) => {
   const suffix = ["th", "st", "nd", "rd"];

@@ -1,7 +1,6 @@
-import { CSSProperties } from "react";
 import { TextField } from "@mui/material";
 
-const styles: { [key: string]: CSSProperties} = {
+const styles = {
   label: {
     fontSize: "16px",
     color: "#333333",

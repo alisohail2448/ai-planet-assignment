@@ -1,7 +1,7 @@
 import { CSSProperties, useState } from "react";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 
-const styles: { [key: string]: CSSProperties } = {
+const styles = {
   container: {
     position: "relative",
     display: "inline-block",

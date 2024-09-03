@@ -1,11 +1,11 @@
-import { CSSProperties, useState } from "react";
-import { challengesData } from "../constants/constants";
+import { useState } from "react";
 import Card from "./Card";
 import FiltersDropdown from "./FiltersDropdown";
 import SearchBar from "./SearchBar";
 import { Cancel } from "@mui/icons-material";
+import { challengesData } from "../constants/constant";
 
-const styles: { [key: string]: CSSProperties } = {
+const styles = {
   container: {
     background: "#003145",
     height: "100%",
@@ -17,7 +17,7 @@ const styles: { [key: string]: CSSProperties } = {
   contentWrapper: {
     padding: "30px 0",
     display: "flex",
-    flexDirection: "column" as 'column',
+    flexDirection:'column',
     alignItems: "center",
   },
   title: {
@@ -55,7 +55,7 @@ const styles: { [key: string]: CSSProperties } = {
     margin: "0 auto",
     padding: "100px 0",
     display: "flex",
-    flexDirection: "row" as 'row',
+    flexDirection:  'row',
     alignItems: "center",
     justifyContent: "center",
   },

@@ -1,11 +1,8 @@
-import { statisticsData } from "../constants/constants";
 import hero from "../assets/hero.png";
 import { useNavigate } from "react-router-dom";
-import { CSSProperties } from "react";
+import { statisticsData } from "../constants/constant";
 
-
-
-const styles: { [key: string]: CSSProperties } = {
+const styles = {
   heroContainer: {
     background: "#003145",
     height: "100%",
@@ -15,14 +12,14 @@ const styles: { [key: string]: CSSProperties } = {
     margin: "0 auto",
     padding: "100px 0",
     display: "flex",
-    flexDirection: "row" as 'row',
+    flexDirection: 'row',
     alignItems: "center",
   },
   heroText: {
     width: "60%",
     display: "flex",
     gap: "50px",
-    flexDirection: "column" as 'column',
+    flexDirection: 'column',
   },
   heroTitle: {
     borderLeft: "10px solid #ffce5c",
@@ -61,7 +58,7 @@ const styles: { [key: string]: CSSProperties } = {
   statisticsContent: {
     padding: "30px 0",
     display: "flex",
-    flexDirection: "row" as 'row',
+    flexDirection: 'row',
     justifyContent: "space-evenly",
   },
   statisticItem: {

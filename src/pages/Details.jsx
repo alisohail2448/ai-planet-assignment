@@ -1,11 +1,11 @@
-import React, { CSSProperties, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getChallengeById, getStatusMessage } from "../utils/helper";
 import { AccessTime } from "@mui/icons-material";
 import level from "../assets/icons/level.svg";
 import Description from "../components/Description";
+import { getChallengeById, getStatusMessage } from "../utils/helpter";
 
-const styles: { [key: string]: CSSProperties } = {
+const styles = {
   container: {
     background: "#003145",
     paddingBottom: 40,
@@ -17,7 +17,7 @@ const styles: { [key: string]: CSSProperties } = {
   },
   statusContainer: {
     display: "inline-flex",
-    flexDirection: "row" as 'row',
+    flexDirection: "row",
     alignItems: "center",
     gap: 8,
     background: "#FFCE5C",

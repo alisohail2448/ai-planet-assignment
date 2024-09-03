@@ -1,7 +1,6 @@
-import { CSSProperties } from "react";
-import { cardsData } from "../constants/constants";
+import { cardsData } from "../constants/constant";
 
-const styles: { [key: string]: CSSProperties } = {
+const styles = {
   aboutContainer: {
     background: "#fff",
     height: "100%",
@@ -32,7 +31,7 @@ const styles: { [key: string]: CSSProperties } = {
     borderRadius: "10px",
     display: "flex",
     gap: "10px",
-    flexDirection: "column" as 'column',
+    flexDirection: 'column',
   },
   cardTitle: {
     fontSize: "24px",

@@ -1,18 +1,18 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { TextField, Button, MenuItem, Box, Typography } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import CustomTextInput from "../components/CustomTextInput";
 import { DatePicker } from "@mui/x-date-pickers";
-import { getChallengeById } from "../utils/helper";
 import { useNavigate, useParams } from "react-router-dom";
 import dayjs from "dayjs";
 import { ArrowForward } from "@mui/icons-material";
 import imageIcon from "../assets/icons/image.svg";
 import toast from "react-hot-toast";
+import { getChallengeById } from "../utils/helpter";
 
-const styles: { [key: string]: CSSProperties } = {
+const styles = {
   container: {
     background: "#F8F9FD",
     paddingBottom: 100,
@@ -33,7 +33,7 @@ const styles: { [key: string]: CSSProperties } = {
     maxWidth: "1200px",
     mx: "auto",
     display: "flex",
-    flexDirection: "column" as 'column',
+    flexDirection:'column',
     gap: 3,
     alignItems: "flex-start",
     paddingTop: 4,

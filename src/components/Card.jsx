@@ -1,14 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import {
-  formatDateTime,
-  getStatusColor,
-  getStatusTextColor,
-} from "../utils/helper";
 import { TaskAltOutlined } from "@mui/icons-material";
-import { CSSProperties } from "react";
+import { formatDateTime, getStatusColor, getStatusTextColor } from "../utils/helpter";
 
 
-const styles: { [key: string]: CSSProperties } = {
+const styles = {
   cardContainer: {
     backgroundColor: "#ffffff",
     borderRadius: "15px",
@@ -34,7 +29,7 @@ const styles: { [key: string]: CSSProperties } = {
     padding: "20px",
     textAlign: "center",
     display: "flex",
-    flexDirection: "column" as 'column',
+    flexDirection:  'column',
     alignItems: "center",
   },
   statusLabel: {
@@ -66,7 +61,7 @@ const styles: { [key: string]: CSSProperties } = {
   },
   timeSegment: {
     display: "flex",
-    flexDirection: "column" as 'column',
+    flexDirection:  'column',
   },
   timeValue: {
     fontSize: "16px",
@@ -125,7 +120,6 @@ const Card = ({
   title,
   startDate,
   endDate,
-  buttonText,
   imageUrl,
 }) => {
   const navigate = useNavigate();
